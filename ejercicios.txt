@@ -1,0 +1,19 @@
+1- db.samples_pokemon.find({num: "132"})
+2- db.samples_pokemon.find({type: "Poison"}).pretty()
+3- db.samples_pokemon.find({avg_spawns:4.2}).pretty()
+4- db.samples_pokemon.find( { $and: [ {candy_count: {$gte:20}},{candy_count: {$lte: 40} } ] }).pretty()
+5- db.samples_pokemon.find(  {spawn_chance: {$gte:0.088}} ).pretty()
+6- db.samples_pokemon.find({}).limit(10).sort({ weight: -1 }).pretty() //a 10 las busquedas y luego las ordena
+7- db.samples_pokemon.find({next_evolution: {$elemMatch:{num: "003"}}}).pretty() //de la siguiente evolucion lo que hace elemMatch es que coger del array de next_evolution el num: 003
+8- db.samples_pokemon.find({ $and:[ {candy_count: {$gte : 25}}, {avg_spawns:{$gte : 5}}]}).pretty() //siempre que haya un and se deben meter en un array
+9- db.samples_pokemon.find({$and:[{weaknesses: "Ground"}, {multipliers: null}]}).pretty()
+10- db.samples_pokemon.find().sort({avg_spawns: -1}).pretty() //utilizamos un orden descendente
+11- db.samples_pokemon.find({candy_count: {$lt:100}}).sort({candy_count: -1}).pretyy() //encuentra los candy count menores de 100 y ordenalos en orden descendente
+12- db.samples_pokemon.find({egg:/Not in Eggs/}).pretty()
+13- db.samples_pokemon.find({$or: [{candy_count: {$gte: 100}},{multipliers: null}]}).pretty()
+14- db.samples_pokemon.find({$and: [{candy_count: {$gt: 25   }},{spawn_time: {$lt:15}}, {avg_spawns: {$gt:40}}]}).pretty()
+15- db.samples_pokemon.find({candy_count:{$gt: 50}}).limit(3).pretty()// busca a partir de candy_count mayor que 50 
+16- db.samples_pokemon.find({$and:[{type: "Ground"}, {weaknesess: {$not: /Grass/}}]}).pretty() //$ne acepta strings pero not no  esto hace que busque los pokemon de tipo tierra y que no tengan debilidad a la planta
+17- db.samples_pokemon.find().sort({candy_count: -1}).pretty() // orden descendente
+18- db.samples_pokemon.find().sort({spawn_chance: 1}).pretty() // orden ascendente
+19- db.samples_pokemon.find({name: /Magikard/}).pretty() // si lo pones entre comillas solo saldria 1 que coincida con el string con el patron de texto es mas flexible
